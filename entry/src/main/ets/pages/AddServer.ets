@@ -128,6 +128,7 @@ struct Index {
 
                   /*
                    * Having no idea what the F**K happened there....
+                   * Possible Cause: On first installation, DataBase won't be initialized.
                    * */
 
                   if (!err) {
