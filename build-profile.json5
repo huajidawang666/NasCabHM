@@ -1,0 +1,49 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\zhouy\\.ohos\\config\\default_NasCabHM_58t8IULgPxKY41ue6fizqIW0Ka2jMutrnh1trKbt_NM=.cer",
+          "storePassword": "0000001B65320778B069DDB5A017F94111943F49AC9514FAF2DFE6224AAC17B9B3865E186AEDA90E2E3628",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BF9278D766D5CFAC588C15D81258CCDC35E93F20CF75B8740231E895FDCC02DF066FA1F7DDA7EE2",
+          "profile": "C:\\Users\\zhouy\\.ohos\\config\\default_NasCabHM_58t8IULgPxKY41ue6fizqIW0Ka2jMutrnh1trKbt_NM=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\zhouy\\.ohos\\config\\default_NasCabHM_58t8IULgPxKY41ue6fizqIW0Ka2jMutrnh1trKbt_NM=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS",
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

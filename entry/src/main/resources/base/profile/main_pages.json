@@ -1,0 +1,7 @@
+{
+  "src": [
+    "pages/AddServer",
+    "pages/NasCab",
+    "pages/ServerList"
+  ]
+}
