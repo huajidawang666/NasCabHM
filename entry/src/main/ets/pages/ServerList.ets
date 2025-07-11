@@ -4,7 +4,7 @@ export interface ServerItem {
   id: String
   serverIP: String
   serverPort: Number
-  // serverName: String
+  serverName: String
   account: String
   passwd: String
 }

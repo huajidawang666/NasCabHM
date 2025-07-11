@@ -1,4 +1,4 @@
-import {distributedKVStore} from '@kit.ArkData'
+import { distributedKVStore } from '@kit.ArkData'
 import { BusinessError } from '@kit.BasicServicesKit'
 
 class KVStoreService {
@@ -26,7 +26,7 @@ class KVStoreService {
         createIfMissing: true,
         autoSync: true,
         kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-        securityLevel: distributedKVStore.SecurityLevel.S2,
+        securityLevel: distributedKVStore.SecurityLevel.S1,
       }, (err: BusinessError, store: distributedKVStore.SingleKVStore) => {
         if (!err){
           console.log('Getting KvStore...');

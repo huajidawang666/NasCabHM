@@ -8,7 +8,7 @@ export interface ServerItem {
   id: String
   serverIP: String
   serverPort: Number
-  // serverName: String
+  serverName: String
   account: String
   passwd: String
 }
@@ -108,7 +108,7 @@ struct Index {
                 id: Date.now().toString(),
                 serverIP: this.serverIP,
                 serverPort: this.serverPort,
-                // serverName: this.serverName,
+                serverName: this.serverName,
                 account: this.account,
                 passwd: this.passwd,
               }
@@ -120,12 +120,19 @@ struct Index {
 
               let kvStore = KVStoreService.getInstance().getKVStore();
               kvStore?.get('NasCabServerList', (err, value) => {
-                if (err) {
+                if (err && err.code != 15100004) {
                   console.error(`Failed to get server. Code is ${err.code}, message is ${err.message}, ${err.stack}`);
                 } else {
                   console.debug('Server list retrieved successfully:', value);
                   let serverList : ServerItem[] = [];
-                  serverList = JSON.parse(value as string) as ServerItem[];
+
+                  /*
+                   * Having no idea what the F**K happened there....
+                   * */
+
+                  if (!err) {
+                    serverList = JSON.parse(value as string) as ServerItem[];
+                  }
                   console.debug('Current server list:', JSON.stringify(serverList));
                   // Add newServer into serverList here...
                   serverList.push(newServer);
