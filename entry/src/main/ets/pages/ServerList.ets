@@ -16,6 +16,19 @@ struct ServerList {
   @State ListLanes: LengthConstrain = { minLength: 240, maxLength: 360 };
   @State serverList : ServerItem[] = [];
 
+  @Builder itemEnd() {
+    Button(){
+      Text() {
+        SymbolSpan($r('sys.symbol.square_and_pencil'))
+          .fontSize(28)
+          .fontColor([Color.White])
+      }
+    }
+    .type(ButtonType.Circle)
+    .size({width: 42, height: 42})
+    .margin({left: 12})
+  }
+
   aboutToAppear(): void {
     let kvStore = KVStoreService.getInstance().getKVStore();
     if (!kvStore) {
@@ -53,8 +66,8 @@ struct ServerList {
         })
       List() {
         ForEach(this.serverList, (server : ServerItem, index) => {
-          ListItem(){
-            Row(){
+          ListItem() {
+            Row() {
               Text((index + 1).toString())
                 .fontSize(18)
                 .fontWeight(FontWeight.Bold)
@@ -68,16 +81,23 @@ struct ServerList {
                   .fontSize(14)
                   .fontColor(Color.Grey)
               }
-                .alignItems(HorizontalAlign.Center)
-                .width('70%')
+              .alignItems(HorizontalAlign.Center)
+              .width('70%')
             }
-              .height(120)
-              .width('90%')
-              .padding(12)
-              .backgroundColor('#F5F5F5')
-              .borderRadius(12)
-              .margin({ bottom: 8, left: 12, right: 12 })
+            .height(120)
+            .width('100%')
+            .padding(12)
+            .backgroundColor('#F5F5F5')
+            .borderRadius(12)
+            .margin({ bottom: 8})
           }
+          .swipeAction({
+            end: {
+              builder: () => { this.itemEnd() },
+              onAction: () => {},
+              actionAreaDistance: 0
+            }
+          })
         })
       }
         .width('90%')
@@ -86,7 +106,14 @@ struct ServerList {
         .lanes(this.ListLanes)
         .alignListItem(ListItemAlign.Center)
 
-      Button('󰀵')
+      Button() {
+        Text() {
+          SymbolSpan($r('sys.symbol.plus'))
+            .fontSize(28)
+            .fontColor([Color.White])
+        }
+      }
+        .size({width: 42, height: 42})
         .position({right: 50, bottom: 50})
         .type(ButtonType.Circle)
         .onClick(() => {
